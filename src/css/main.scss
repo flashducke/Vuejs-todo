@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+// variables
+$font-f: 'Raleway', sans-serif;
+
+$color: #111111;
+$red: #AD4025;
+$yellow: #FDD10D;
+$l-red: #DEAA9D;
+$l-gray: #D4D4D4;
+
+// base
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: $font-f;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 24px;
+  color: $color;
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 45px;
+  font-size: 54px;
+  line-height: 60px;
+  color: white;
+  @media screen and (max-width: 450px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 54px;
+  font-weight: 500;
+  @media screen and (max-width: 450px) {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
+section {
+  padding: 25px 0;
+}
+
+ol {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $color;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: $red;
+}
+
+button {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}
+
+input::placeholder, button, select {
+  font-family: $font-f;
+}
+
+input[type="checkbox"] {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  cursor: pointer;
+}
+//base end
+
+//loader
+.lds-ripple {
+  display: block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #cef;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+//loader end
+
+.wrapper {
+  width: 100%;
+  padding: 0 20px;
+}
+
+#app {
+  position: relative;
+  height: 100vh;
+}
+
+.link {
+  position: relative;
+  transition: color 0.3s ease-out;
+  padding-right: 40px;
+
+  &::after {
+    content: '\21AC';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    font-size: 24px;
+    height: 100%;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: right 0.3s ease-out;
+  }
+
+  &:hover {
+
+    &::after {
+      right: -20px;
+    }
+  }
+
+  &.black {
+    &::after {
+      color: $color;
+    }
+  }
+
+  &.white {
+    color: white;
+
+    &::after {
+      color: white;
+    }
+  }
+}
+
+.corset {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.base-input {
+  border: none;
+  outline: none;
+  color: $l-gray;
+  padding: 0 15px;
+  border-bottom: 1px solid $l-gray;
+
+  &::placeholder {
+    color: $l-gray;
+  }
+}
+
+.btn {
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  &.add {
+    height: 100%;
+    background-color: $yellow;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px #00000017;
+    transition: box-shadow 0.3s ease-out;
+    @media screen and (max-width: 450px) {
+      padding: 5px 10px;
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &.remove {
+    color: $red;
+    font-size: 36px;
+    line-height: 1rem;
+  }
+}
+
+.page-home {
+  height: 100%;
+  padding-top: 160px;
+  background-color: #2c3e50;
+
+  .bg-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .home-header {
+    position: relative;
+    text-align: center;
+    z-index: 9;
+  }
+}
+
+.page-todo {
+  .todo-list {
+    @media screen and (max-width: 450px) {
+      padding-top: 0;
+    }
+  }
+  .header-container {
+    text-align: center;
+
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+
+  .option-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 18px;
+    line-height: 24px;
+    @media screen and (max-width: 450px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .todo-filter-container {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7px 5px 0 5px;
+      border-color: #111111 transparent transparent transparent;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    @media screen and (max-width: 660px) {
+      margin-top: 40px;
+    }
+    @media screen and (max-width: 450px) {
+      margin-top: 25px;
+    }
+  }
+
+  .todo-filter {
+    padding: 15px 30px 15px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px #00000017;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    option {
+      border-color: white;
+    }
+  }
+
+  .todo-add {
+    display: flex;
+
+    input {
+      @media screen and (max-width: 450px) {
+        max-width: 175px;
+        font-size: 12px;
+      }
+    }
+
+    .btn {
+      margin: 0 25px;
+      @media screen and (max-width: 450px) {
+        margin: 0 0 0 5px;
+      }
+    }
+  }
+
+  .list-container {
+    ol {
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 25px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px #00000017;
+        @media screen and (max-width: 450px) {
+          padding: 10px 15px;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+
+    .todo-title {
+      transition: text-decoration 0.3s ease-out;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      transition: color 0.3s ease-out;
+
+      &.done {
+        color: $l-gray;
+
+        .todo-title {
+          text-decoration: line-through;
+          text-decoration-color: $l-red;
+        }
+
+        .checkbox {
+          &::after {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    .todo-num {
+      margin-right: 20px;
+      @media screen and (max-width: 450px) {
+        margin-right: 10px;
+      }
+
+    }
+
+    .checkbox {
+      position: relative;
+      display: flex;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 20px;
+      transition: color 0.3s, border-color 0.3s ease-out;
+      @media screen and (max-width: 450px) {
+        margin-right: 10px;
+      }
+
+      &::after {
+        opacity: 0;
+        visibility: hidden;
+        content: '\2713';
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        background-color: $yellow;
+        pointer-events: none;
+        transition: opacity 0s, visibility 0s;
+      }
+    }
+  }
+  .no-todo {
+    text-align: center;
+  }
+}
